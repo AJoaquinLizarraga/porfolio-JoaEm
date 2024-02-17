@@ -1,13 +1,29 @@
 <header
-  class="flex justify-between items-center py-6 w-full xl:w-[1120px] mx-auto"
+  class="flex justify-center items-center py-6 mx-auto sticky top-0 w-full xl:w-[1120px] z-0"
 >
-  <img src="JoaEm.jpeg" alt="JoaEm photo" class="rounded-full size-16 mx-2" />
+  <!-- <img src="JoaEm.jpeg" alt="JoaEm photo" class="rounded-full size-16 mx-2" /> -->
 
-  <nav class="flex flex-row gap-x-10 opacity-90 mx-2">
-    <a href="#">Home</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+  <nav
+    class={`
+      border border-black
+      rounded-full px-3 py-2
+      flex flex-row items-center
+      bg-gray-200 dark:bg-black/50 backdrop-blur-2xl
+      `}
+  >
+    <a class="hover:bg-black/10 rounded-full px-3 transition" href="/#">Home</a>
+    <a
+      class="hover:bg-white/10 rounded-full px-3 transition"
+      href="/#experience">Experience</a
+    >
+    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#projects"
+      >Projects</a
+    >
+    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#about"
+      >About</a
+    >
+    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#contact"
+      >Contact</a
+    >
   </nav>
 </header>

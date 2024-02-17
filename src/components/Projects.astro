@@ -24,6 +24,7 @@ const PROJECTS = [
     github: "https://github.com/pheralb/svgl",
     image: "/projects/pokedexMain.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
+    // youtube: "https://www.youtube.com/embed/v=TS83v2gDfTk",
   },
 ]
 ---
@@ -48,6 +49,16 @@ const PROJECTS = [
             )
           })}
       </ul>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/XYLJSnfaQ54?si=CqFkex5LTZ8I-0JQ"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      />
+
       <img
         src={image}
         alt={`Screenshot  of ${title}`}
