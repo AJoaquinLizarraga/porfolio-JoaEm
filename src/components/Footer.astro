@@ -1,3 +1,7 @@
+---
+const currentYear = new Date().getFullYear()
+---
+
 <footer
   class="rounded-lg shadow m-4 dark:bg-black/20 backdrop-blur-lg w-full xl:w-[1120px] mx-auto mb-8"
 >
@@ -5,7 +9,8 @@
     class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
   >
     <span class="text-sm sm:text-center text-yellow-200/80"
-      >© 2024 <a
+      >© {currentYear}
+      <a
         href="https://github.com/AJoaquinLizarraga/porfolio-JoaEm.git"
         target="_blank"
         class="hover:underline">JoaEm™</a
