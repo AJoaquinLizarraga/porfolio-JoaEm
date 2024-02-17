@@ -1,0 +1,43 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+
+const EXPERIENCE = [
+  {
+    date: " febrero 22",
+    title: "Software Engineer Intern",
+    description:
+      "Desarrollo de una aplicación web en React.js para la gestión de un sistema de reserva de habitaciones hotelera",
+    company: "Mercado Libre",
+    link: "https://www.mercadolibre.com.ar/",
+    more: "sdfsdfsdf",
+  },
+  {
+    date: " febrero 22",
+    title: "Software Engineer Intern",
+    description:
+      "Desarrollo de una aplicación web en React.js para la gestión de un sistema de reserva de habitaciones hotelera",
+    company: "Mercado Libre",
+    link: "",
+    more: "",
+  },
+  {
+    date: " febrero 22",
+    title: "Software Engineer Intern",
+    description:
+      "Desarrollo de una aplicación web en React.js para la gestión de un sistema de reserva de habitaciones hotelera",
+    company: "Mercado Libre",
+    link: "https://www.mercadolibre.com.ar/",
+    more: "",
+  },
+]
+---
+
+<ol class="relative border-s border-gray-200 ml-3.5">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

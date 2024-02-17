@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Badge from "../components/Badge.astro"
+import LinkedInIcon from "../icons/LinkedIn.astro"
+import SocialPill from "../icons/SocialPill.astro"
+import GithubIcon from "../icons/Github.astro"
+import CalendlyIcon from "../icons/Calendly.astro"
+import MailIcon from "../icons/Mail.astro"
+import BriefcaseIcon from "../icons/Briefcase.astro"
+import CodeSandBoxIcon from "../icons/CodeSandBox.astro"
+import Experience from "../components/Experience.astro"
+import Projects from "../components/Projects.astro"
+import SectionContainer from "../components/SectionContainer.astro"
+---
+
+<Layout
+  title="Porfolio de JoaEm - Mobile Developer and Fullstack Web"
+  description="Hire Joaquin to develop your mobile and web applications."
+>
+  <main class="px-4">
+    <SectionContainer class="py-28 pb-32">
+      <h1
+        class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+      >
+        Hey, I am Joaquin
+        <a
+          class="flex justify-center items-center"
+          href="https://www.linkedin.com/in/joaquin-lizarraga-965637134/"
+          target="_blank"
+          rel="noopener"
+        >
+          <Badge>Available for be hired</Badge>
+        </a>
+      </h1>
+      <h2 class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
+        <span class="text-yellow-200"
+          >Mobile, Fullstack Web Developer and Diabetes content creator.</span
+        >
+        <span
+          class="bg-gradient-to-r from-blue-500 via-white to-blue-500 text-transparent bg-clip-text"
+          >From Córdoba, Argentina.</span
+        >
+        <span class="opacity-75">Specialized in taking your ideas to code.</span
+        >
+      </h2>
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill
+          href="https://www.linkedin.com/in/joaquin-lizarraga-965637134/"
+        >
+          <LinkedInIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/AJoaquinLizarraga">
+          <GithubIcon class="size-4 md:size-6" />
+          Github
+        </SocialPill>
+        <SocialPill href="https://calendly.com/joaem-lizarraga">
+          <CalendlyIcon class="size-4 md:size-6" />
+          Calendly
+        </SocialPill>
+        <SocialPill href="mailto:joaem.lizarraga@gmail.com">
+          <MailIcon class="size-4 md:size-6" />
+          joaem.lizarraga@gmail.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+    <SectionContainer id="experience">
+      <h2 class="text-3xl font-semibold mb-3 flex gap-x-2 items-center">
+        <BriefcaseIcon class="size-8" />
+        Work Experience
+      </h2>
+      <Experience />
+    </SectionContainer>
+    <SectionContainer id="projects">
+      <h2 class="text-3xl font-semibold mb-3 flex gap-x-2 items-center">
+        <CodeSandBoxIcon class="size-8" />
+        Projects
+      </h2>
+      <Projects />
+    </SectionContainer>
+  </main>
+</Layout>

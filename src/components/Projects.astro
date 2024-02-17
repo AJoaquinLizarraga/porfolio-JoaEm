@@ -1,0 +1,58 @@
+---
+import NextjsIcon from "../icons/Nextjs.astro"
+import TailwindCSSIcon from "../icons/TailwindCSS.astro"
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextjsIcon,
+  },
+  TAILWIND: {
+    name: "TailwindCSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindCSSIcon,
+  },
+}
+
+const PROJECTS = [
+  {
+    title: "Pokedex",
+    description:
+      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
+    link: "https://svgl.vercel.app/",
+    github: "https://github.com/pheralb/svgl",
+    image: "/projects/pokedexMain.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+]
+---
+
+{
+  PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-4 flex-row mb-4">
+        {tags &&
+          tags.map((tag) => {
+            return (
+              <li>
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+                >
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            )
+          })}
+      </ul>
+      <img
+        src={image}
+        alt={`Screenshot  of ${title}`}
+        class="rounded shadow-2xl shadow-white/10 "
+      />
+    </article>
+  ))
+}
