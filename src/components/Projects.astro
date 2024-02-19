@@ -4,6 +4,7 @@ import NextjsIcon from "../icons/Nextjs.astro"
 import WebIcon from "../icons/Web.astro"
 import TailwindCSSIcon from "../icons/TailwindCSS.astro"
 import LinkButton from "./LinkButton.astro"
+import Carrousel from "./Carrousel.astro"
 
 const TAGS = {
   NEXT: {
@@ -17,82 +18,94 @@ const TAGS = {
     icon: TailwindCSSIcon,
   },
 }
+interface Tag {
+  name: string
+  class: string
+  icon: typeof NextjsIcon | typeof TailwindCSSIcon // o cualquier tipo de icono que estés utilizando
+}
+interface ProjectCardProps {
+  title: string
+  description?: string
+  link?: string
+  github: string
+  image: string | string[]
+  tags?: Tag[]
+  youtube: string
+}
 
-const PROJECTS = [
+const PROJECTS: ProjectCardProps[] = [
   {
     title: "Pokedex",
     description:
       "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
     link: "https://svgl.vercel.app/",
     github: "https://github.com/pheralb/svgl",
-    image: "/projects/pokedexMain.webp",
+    image: [
+      "/projects/PokedexScreens.webp",
+      // "/projects/pokedexMain.webp",
+      "/projects/PokedexScreens3.webp",
+      // "https://www.youtube.com/embed/XYLJSnfaQ54?si=6zV0Yp5DKQTFxBw9",
+      "JoaEm.jpeg",
+      "JoaEm2.jpeg",
+      "JoaEm3.jpeg",
+      // "JoaEm4.jpeg",
+      // "JoaEmRealPic.png",
+    ],
+    // image: "/projects/pokedexMain.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
-    // youtube: "https://www.youtube.com/embed/v=TS83v2gDfTk",
-  },
-  {
-    title: "Pokedex",
-    description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/pokedexMain.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
-    // youtube: "https://www.youtube.com/embed/v=TS83v2gDfTk",
+    youtube: "https://www.youtube.com/embed/XYLJSnfaQ54?si=6zV0Yp5DKQTFxBw9",
   },
 ]
 ---
 
 <section class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-      <article>
-        <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
-        <p class="text-lg mb-4 text-pretty">{description}</p>
-        <ul class="flex gap-x-4 flex-row mb-4">
-          {tags &&
-            tags.map((tag) => {
-              return (
-                <li>
-                  <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
-                  >
-                    <tag.icon class="size-4" />
-                    {tag.name}
-                  </span>
-                </li>
-              )
-            })}
-        </ul>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/XYLJSnfaQ54?si=CqFkex5LTZ8I-0JQ"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        />
-
-        <img
-          src={image}
-          alt={`Screenshot  of ${title}`}
-          class="rounded shadow-2xl shadow-white/10 "
-        />
-        <footer class="flex gap-x-4 mt-2">
-          {github && (
-            <LinkButton link={github}>
-              <GithubIcon class="size-6 mr-1" />
-              Watch source code
-            </LinkButton>
+    PROJECTS.map(
+      ({ image, title, description, tags, link, github, youtube }) => (
+        <article>
+          <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
+          <p class="text-lg mb-4 text-pretty">{description}</p>
+          <ul class="flex gap-x-4 flex-row mb-4">
+            {tags &&
+              tags.map((tag) => {
+                return (
+                  <li>
+                    <span
+                      class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+                    >
+                      <tag.icon class="size-4" />
+                      {tag.name}
+                    </span>
+                  </li>
+                )
+              })}
+          </ul>
+          {typeof image === "string" ? (
+            <img
+              id={image}
+              src={image}
+              alt={`Screenshot  of ${title}`}
+              class="relative top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+            />
+          ) : (
+            <Carrousel images={image} youtube={youtube} />
           )}
-          {link && (
-            <LinkButton link={link}>
-              <WebIcon class="mr-1" />
-              go to web site
-            </LinkButton>
-          )}
-        </footer>
-      </article>
-    ))
+          <footer class="flex gap-x-4 mt-2">
+            {github && (
+              <LinkButton link={github}>
+                <GithubIcon class="size-6 mr-1" />
+                Watch source code
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton link={link}>
+                <WebIcon class="mr-1" />
+                go to web site
+              </LinkButton>
+            )}
+          </footer>
+        </article>
+      )
+    )
   }
 </section>
