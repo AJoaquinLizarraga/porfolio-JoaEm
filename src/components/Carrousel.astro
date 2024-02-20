@@ -2,20 +2,6 @@
 const { images, youtube } = Astro.props
 ---
 
-<!-- <iframe
-  width="560"
-  height="315"
-  src={youtube}
-  title="YouTube video player"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen></iframe>
-
-<img
-  src={images[0]}
-  alt="algo por aqui"
-  class="w-full h-64 object-cover rounded shadow"
-/> --><!-- This is an example component |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\--><!-- This is an example component |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\--><!-- This is an example component |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\--><!-- This is an example component |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\--><!-- This is an example component -->
 <div class="flex max-w-2xl mx-auto">
   <div id="default-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
@@ -26,7 +12,6 @@ const { images, youtube } = Astro.props
 
       {
         images?.map((item: string, index: number) => {
-          console.log(index)
           if (item.startsWith("/")) {
             return (
               <div class="hidden ease-in-out" data-carousel-item>
