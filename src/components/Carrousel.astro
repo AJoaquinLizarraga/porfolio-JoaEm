@@ -31,7 +31,8 @@ const { images } = Astro.props
                   title={`Youtube Video`}
                   width="560"
                   height="315"
-                  src={images[index]}
+                  src={`${images[index]}?amp&rel=0&mute=1`}
+                  allowfullscreen
                   class="absolute bg-black top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2"
                 />
               </div>
