@@ -15,7 +15,7 @@ import Carrousel from "./Carrousel.astro"
 const TAGS = {
   NEXT: {
     name: "Next.js",
-    class: "bg-black text-white",
+    class: "bg-[#003159] text-white",
     icon: NextjsIcon,
   },
   TAILWIND: {
@@ -175,7 +175,7 @@ const PROJECTS: ProjectCardProps[] = [
         ) : (
           <Carrousel images={image} />
         )}
-        <footer class="flex gap-x-4 mt-2">
+        <footer class="flex justify-center gap-x-4 mt-2">
           {github && (
             <LinkButton link={github}>
               <GithubIcon class="size-6 mr-1" />
