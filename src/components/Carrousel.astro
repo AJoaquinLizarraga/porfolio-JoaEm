@@ -1,12 +1,13 @@
 ---
-const { images, youtube } = Astro.props
+const { images } = Astro.props
+// const newImages = images.push(youtube)
 ---
 
 <div class="flex max-w-2xl mx-auto">
   <div id="default-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
     <div
-      class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96 z-20"
+      class="overflow-hidden relative h-64 rounded-lg sm:h-80 xl:h-96 2xl:h-[480px] z-20"
     >
       <!-- Item 1 -->
 
@@ -18,23 +19,19 @@ const { images, youtube } = Astro.props
                 <img
                   id={item}
                   src={images[index]}
-                  class="relative top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                  class="relative top-1/2 left-1/2 w-full h-full  -translate-x-1/2 -translate-y-1/2"
                   alt={item}
                 />
               </div>
             )
-          } else if (youtube) {
+          } else if (item.startsWith("https")) {
             return (
-              <div class="hidden ease-in-out" data-carousel-item="active">
+              <div class="hidden ease-in-out" data-carousel-item>
                 <iframe
                   width="560"
                   height="315"
-                  src={youtube}
-                  title="YouTube video player"
-                  aria-controls="video-player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                  class="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2"
+                  src={images[index]}
+                  class="absolute bg-black top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2"
                 />
               </div>
             )
@@ -44,33 +41,35 @@ const { images, youtube } = Astro.props
     </div>
 
     <!-- Slider controls -->
-    <button
-      type="button"
-      class="bg-green-400 flex rounded-full absolute top-1/2 left-2 z-30 cursor-pointer group focus:outline-none"
-      data-carousel-prev
-    >
-      <span
-        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+    <div class="justify-center">
+      <button
+        type="button"
+        class="flex rounded-full absolute top-1/2 left-2 z-30 cursor-pointer group focus:outline-none"
+        data-carousel-prev
       >
-        <svg
-          class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 19l-7-7 7-7"></path></svg
+        <span
+          class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
         >
-        <!-- <span class="hidden">Previous</span> -->
-      </span>
-    </button>
+          <svg
+            class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"></path></svg
+          >
+          <!-- <span class="hidden">Previous</span> -->
+        </span>
+      </button>
+    </div>
 
     <button
       type="button"
-      class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+      class="flex rounded-full absolute top-1/2 right-2 z-30 cursor-pointer group focus:outline-none"
       data-carousel-next
     >
       <span
