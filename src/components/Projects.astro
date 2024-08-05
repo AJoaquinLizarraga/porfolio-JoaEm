@@ -1,16 +1,16 @@
 ---
-import GithubIcon from "../icons/Github.astro"
-import NextjsIcon from "../icons/Nextjs.astro"
-import WebIcon from "../icons/Web.astro"
-import TailwindCSSIcon from "../icons/TailwindCSS.astro"
-import ReactIcon from "../icons/React.astro"
-import ExpoIcon from "../icons/Expo.astro"
-import CSSIcon from "../icons/CSS.astro"
-import AndroidIcon from "../icons/Android.astro"
-import JavascriptIcon from "../icons/Javascript.astro"
-import TypescriptIcon from "../icons/Typescript.astro"
-import LinkButton from "./LinkButton.astro"
-import Carrousel from "./Carrousel.astro"
+import GithubIcon from "../icons/Github.astro";
+import NextjsIcon from "../icons/Nextjs.astro";
+import WebIcon from "../icons/Web.astro";
+import TailwindCSSIcon from "../icons/TailwindCSS.astro";
+import ReactIcon from "../icons/React.astro";
+import ExpoIcon from "../icons/Expo.astro";
+import CSSIcon from "../icons/CSS.astro";
+import AndroidIcon from "../icons/Android.astro";
+import JavascriptIcon from "../icons/Javascript.astro";
+import TypescriptIcon from "../icons/Typescript.astro";
+import LinkButton from "./LinkButton.astro";
+import Carrousel from "./Carrousel.astro";
 
 const TAGS = {
   NEXT: {
@@ -53,20 +53,20 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: CSSIcon,
   },
-}
+};
 interface Tag {
-  name: string
-  class: string
-  icon: typeof NextjsIcon | typeof TailwindCSSIcon // o cualquier tipo de icono que estés utilizando
+  name: string;
+  class: string;
+  icon: typeof NextjsIcon | typeof TailwindCSSIcon; // o cualquier tipo de icono que estés utilizando
 }
 interface ProjectCardProps {
-  title: string
-  description?: string
-  link?: string
-  github: string
-  image: string | string[]
-  tags?: Tag[]
-  app: boolean
+  title: string;
+  description?: string;
+  link?: string;
+  github: string;
+  image: string | string[];
+  tags?: Tag[];
+  app: boolean;
 }
 
 const PROJECTS: ProjectCardProps[] = [
@@ -136,7 +136,7 @@ const PROJECTS: ProjectCardProps[] = [
     ],
     app: false,
   },
-]
+];
 ---
 
 <section class="flex flex-col gap-y-16">
@@ -151,13 +151,12 @@ const PROJECTS: ProjectCardProps[] = [
               return (
                 <li>
                   <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
-                  >
+                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
                     <tag.icon class="size-4" />
                     {tag.name}
                   </span>
                 </li>
-              )
+              );
             })}
         </ul>
         {typeof image === "string" ? (
@@ -166,7 +165,7 @@ const PROJECTS: ProjectCardProps[] = [
               <div class="overflow-hidden relative h-64 rounded-lg sm:h-80 xl:h-96 2xl:h-[480px] z-20">
                 <img
                   src={image}
-                  class="relative top-1/2 left-1/2 w-full h-full  -translate-x-1/2 -translate-y-1/2"
+                  class="relative top-1/2 left-1/2  h-full  -translate-x-1/2 -translate-y-1/2"
                   alt={`Screenshot of ${title}`}
                 />
               </div>

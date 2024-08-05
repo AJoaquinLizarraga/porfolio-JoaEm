@@ -1,5 +1,5 @@
 ---
-const { images } = Astro.props
+const { images } = Astro.props;
 // const newImages = images.push(youtube)
 ---
 
@@ -7,8 +7,7 @@ const { images } = Astro.props
   <div id="default-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
     <div
-      class="overflow-hidden relative h-64 rounded-lg sm:h-80 xl:h-96 2xl:h-[480px] z-20"
-    >
+      class="overflow-hidden relative h-64 rounded-lg sm:h-80 xl:h-96 2xl:h-[480px] z-20">
       <!-- Item 1 -->
 
       {
@@ -19,11 +18,11 @@ const { images } = Astro.props
                 <img
                   id={item}
                   src={images[index]}
-                  class="relative top-1/2 left-1/2 w-full h-full  -translate-x-1/2 -translate-y-1/2"
+                  class="relative top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
                   alt={item}
                 />
               </div>
-            )
+            );
           } else if (item.startsWith("https")) {
             return (
               <div class="hidden ease-in-out" data-carousel-item>
@@ -33,10 +32,10 @@ const { images } = Astro.props
                   height="315"
                   src={`${images[index]}?amp&rel=0&mute=1`}
                   allowfullscreen
-                  class="absolute bg-black top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2"
+                  class="absolute bg-black top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
                 />
               </div>
-            )
+            );
           }
         })
       }
@@ -47,11 +46,9 @@ const { images } = Astro.props
       <button
         type="button"
         class="flex rounded-full absolute top-1/2 left-2 z-30 cursor-pointer group"
-        data-carousel-prev
-      >
+        data-carousel-prev>
         <span
-          class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 dark:group-hover:bg-white/50 group-hover:bg-gray-800/60 group-focus:outline-none"
-        >
+          class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 dark:group-hover:bg-white/50 group-hover:bg-gray-800/60 group-focus:outline-none">
           <svg
             class="w-5 h-5 dark:text-white sm:w-6 sm:h-6 text-gray-800"
             fill="none"
@@ -73,12 +70,10 @@ const { images } = Astro.props
     <button
       type="button"
       class="flex rounded-full absolute top-1/2 right-2 z-30 cursor-pointer group"
-      data-carousel-next
-    >
+      data-carousel-next>
       <span
         class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 dark:group-hover:bg-white/50 group-hover:bg-gray-800/60 group-focus:outline-none"
-        data-carousel-next
-      >
+        data-carousel-next>
         <svg
           class="w-5 h-5 dark:text-white sm:w-6 sm:h-6 text-gray-800"
           fill="none"
