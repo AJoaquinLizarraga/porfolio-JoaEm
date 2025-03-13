@@ -69,7 +69,7 @@ interface ProjectCardProps {
   title: string;
   description?: string;
   link?: string;
-  github: string;
+  github?: string;
   image: string | string[];
   tags?: Tag[];
   app: boolean;
@@ -77,11 +77,39 @@ interface ProjectCardProps {
 
 const PROJECTS: ProjectCardProps[] = [
   {
+    title: "Pursuit",
+    description: `A mobile application developed with React Native and Expo, integrating Supabase for backend services and authentication, and utilizing OpenAI.
+
+It implements a Retrieval Augmented Generation (RAG) model with Pinecone to generate personalized training and nutritional plans based on each user's personal data.
+
+The application combines AI and data analysis to provide tailored recommendations that optimize individual performance and overall well-being.`,
+    // link: "https://www.rentscape.co/",
+    github: "https://github.com/AJoaquinLizarraga/PursuitMobile/tree/Joaquin",
+    image: [
+      "/projects/Pursuit/Pursuit3.webp",
+      "/projects/Pursuit/PursuitOnboarding.webp",
+      "/projects/Pursuit/PursuitTraining2.webp",
+      "/projects/Pursuit/Pursuittrainingscreen.webp",
+      "/projects/Pursuit/PursuitIpad.webp",
+    ],
+    tags: [
+      TAGS.REACTNATIVE,
+      TAGS.EXPO,
+      TAGS.AI,
+      TAGS.TAILWIND,
+      TAGS.TYPESCRIPT,
+    ],
+    app: false,
+  },
+  {
     title: "Rentscape",
-    description:
-      "App developed with React Native and Expo using the Pokemon api, to display information about pokemon. Data persistence is handled with the AsyncStorage library.",
+    description: `An integration within the Rentscape platform that features an AI-powered chat solution.
+
+This system leverages interactive chat combined with function calling to generate precise data, which is then used to perform searches on Pinecone for the best rental properties.
+
+The solution offers an intuitive, personalized search experience, streamlining the decision-making process in the real estate market.`,
     link: "https://www.rentscape.co/",
-    github: "https://github.com/AJoaquinLizarraga/PokedexApp-ReactNative.git",
+    // github: "https://github.com/AJoaquinLizarraga/PokedexApp-ReactNative.git",
     image: [
       "/projects/Rentscape/rentscapechat.webp",
       "/projects/Rentscape/rentscapeCarrousel.webp",
@@ -204,13 +232,13 @@ const PROJECTS: ProjectCardProps[] = [
             <LinkButton link={link}>
               {app === true ? (
                 <>
-                  <AndroidIcon class="size-6 mr-1" />
+                  <AndroidIcon C />
                   Download Android App
                 </>
               ) : (
                 <>
-                  <WebIcon class="mr-1" />
-                  "Go to web site"
+                  <WebIcon class="size-6 mr-1" />
+                  Go to web site
                 </>
               )}
             </LinkButton>
