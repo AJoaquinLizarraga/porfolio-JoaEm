@@ -1,3 +1,9 @@
+---
+const { currentLocale, getRelativeLocaleUrl } = Astro.props;
+
+console.log(getRelativeLocaleUrl(currentLocale, "/experience"));
+---
+
 <header
   class="flex justify-center items-center py-6 mx-auto sticky top-0 w-full xl:w-[1120px] z-40">
   <!-- <img src="JoaEm.jpeg" alt="JoaEm photo" class="rounded-full size-16 mx-2" /> -->
@@ -9,19 +15,30 @@
       flex flex-row items-center
       bg-gray-200/10 dark:bg-black/50  backdrop-blur-2xl
       `}>
-    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#">Home</a>
     <a
       class="hover:bg-white/10 rounded-full px-3 transition"
-      href="/#experience">Experience</a
+      href={getRelativeLocaleUrl(currentLocale, "/#").replace(/\/$/, "")}
+      >Home
+    </a>
+    <a
+      class="hover:bg-white/10 rounded-full px-3 transition"
+      href={getRelativeLocaleUrl(currentLocale, "/#experience").replace(
+        /\/$/,
+        ""
+      )}>Experience</a
     >
-    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#projects"
-      >Projects</a
+
+    <a
+      class="hover:bg-white/10 rounded-full px-3 transition"
+      href={getRelativeLocaleUrl(currentLocale, "/#projects").replace(/\/$/, "")}>Projects</a
     >
-    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#about"
-      >About</a
+    <a
+      class="hover:bg-white/10 rounded-full px-3 transition"
+      href={getRelativeLocaleUrl(currentLocale, "/#about").replace(/\/$/, "")}>About</a
     >
-    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#"
-      >Contact</a
+    <a
+      class="hover:bg-white/10 rounded-full px-3 transition"
+      href={getRelativeLocaleUrl(currentLocale, "/#").replace(/\/$/, "")}>Contact</a
     >
   </nav>
 </header>
