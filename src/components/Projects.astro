@@ -10,6 +10,8 @@ import OpenAIIcon from "../icons/OpenAI.astro";
 import AndroidIcon from "../icons/Android.astro";
 import JavascriptIcon from "../icons/Javascript.astro";
 import TypescriptIcon from "../icons/Typescript.astro";
+import SupabaseIcon from "../icons/Supabase.astro";
+import PineconeIcon from "../icons/Pinecone.astro";
 import LinkButton from "./LinkButton.astro";
 import Carrousel from "./Carrousel.astro";
 
@@ -59,6 +61,16 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: OpenAIIcon,
   },
+  SUPABASE: {
+    name: "Supabase",
+    class: "bg-[#003159] text-white",
+    icon: SupabaseIcon,
+  },
+  PINECONE: {
+    name: "Pinecone",
+    class: "bg-[#003159] text-white",
+    icon: PineconeIcon,
+  },
 };
 interface Tag {
   name: string;
@@ -96,6 +108,8 @@ The application combines AI and data analysis to provide tailored recommendation
       TAGS.REACTNATIVE,
       TAGS.EXPO,
       TAGS.AI,
+      TAGS.PINECONE,
+      TAGS.SUPABASE,
       TAGS.TAILWIND,
       TAGS.TYPESCRIPT,
     ],
@@ -114,7 +128,14 @@ The solution offers an intuitive, personalized search experience, streamlining t
       "/projects/Rentscape/rentscapechat.webp",
       "/projects/Rentscape/rentscapeCarrousel.webp",
     ],
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.TYPESCRIPT, TAGS.AI],
+    tags: [
+      TAGS.NEXT,
+      TAGS.TAILWIND,
+      TAGS.TYPESCRIPT,
+      TAGS.AI,
+      TAGS.PINECONE,
+      TAGS.SUPABASE,
+    ],
     app: false,
   },
   {
