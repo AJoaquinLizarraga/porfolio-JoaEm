@@ -4,11 +4,274 @@ import ExperienceItem from "./ExperienceItem.astro";
 const pursuitProject = "Pursuit";
 const rentscapeProject = "Rentscape";
 const sparkncoProject = "Spark n Co";
+const ondeProject = "Onde";
+const sugarSync = "SugarSync";
 
 const EXPERIENCE = [
   {
-    date: "August 2024 - now",
-    title: "Fullstack Mobile Developer (React native - expo, supabase and AI)",
+    date: "July 2025 - Now",
+    title:
+      "AI Engineer and Fullstack Mobile Developer (React native - expo, supabase and AI)",
+    // projectName: "Pursuit,Rentscape",
+    description: `
+    ${ondeProject}:\n
+    AI-Powered Real Estate Platform
+      A full-stack real estate marketplace featuring advanced AI search capabilities, semantic property discovery, and intelligent chat assistance. Built with a modern dual-architecture approach combining traditional REST APIs with serverless edge functions.
+
+  <h1 class="text-lg font-bold text-stone-200">🤖 AI & Machine Learning Integration</h1>
+
+        <b>OpenAI Integration</b>
+        ► GPT-4o-mini for conversational AI chat and intent classification
+        ► GPT-4o Vision API for automated property image analysis, extracting detailed visual descriptions of interiors, exteriors, colors, materials, and architectural features
+        ► text-embedding-3-small (1536 dimensions) for property text embeddings
+        ► text-embedding-3-large (3072 dimensions) for image and document embeddings
+        ► Intelligent filter extraction from natural language queries
+        ► Context-aware property recommendations
+
+        <b>Semantic Search Pipeline</b>
+        ► Multi-stage AI processing pipeline with <3s response time
+        ► Parallel intent classification and filter extraction
+        ► Visual search mode for queries like "houses with green floors" or "properties with gardens"
+        ► POI (Point of Interest) proximity search integration
+        ► Smart context building from vector matches
+
+        <b>Structured Data Output</b>
+        ► Zod schema validation for API responses
+        ► Type-safe filter extraction with explicit TypeScript interfaces
+        ► Structured JSON responses from AI models using function calling
+        ► Deterministic property reference detection ("la primera", "that one")
+
+  <h1 class="text-lg font-bold text-stone-200">🗄️ Vector Database & Embeddings</h1>
+
+        <b>Pinecone Vector Database</b>
+        ► Three specialized indexes for different content types:
+          ► Properties Index (text-embedding-3-small, 1536 dim): Property descriptions, addresses, features
+          ► Images Index (text-embedding-3-large, 3072 dim): Visual analysis from property photos
+          ► Documents Index (text-embedding-3-large, 3072 dim): Floor plans, contracts, certificates
+        ► Parallel vector search across all indexes
+        ► Metadata filtering (price, bedrooms, location, amenities)
+        ► Deduplication by property_id
+        ► Hash-based vector IDs for idempotent operations
+
+        <b>Embedding Generation System</b>
+        ► Automated batch processing (5 images parallel, up to 50 images per property)
+        ► Deterministic SHA-256 hash-based vector IDs to prevent duplicates
+        ► Image analysis with detailed prompts for exterior/interior features
+        ► Property text chunking with semantic sentence splitting
+        ► Fire-and-forget async embedding generation with error tracking
+
+  <h1 class="text-lg font-bold text-stone-200">☁️ Supabase Edge Functions (Deno)</h1>
+
+        <b>Main AI chat orchestrator</b>
+        ► 5-step processing pipeline optimized for performance
+        ► Parallel intent classification and filter extraction
+        ► Vector search coordination across Pinecone indexes
+        ► GPT-4o-mini response generation with context awareness
+        ► Conversation history management with session tracking
+
+        <b>Embedding generation service</b>
+        ► OpenAI Vision API integration for image analysis
+        ► Multi-index embedding distribution
+        ► Automatic metadata normalization
+        ► Chunk-based text processing
+        ► Document storage in Supabase with preview generation
+
+        <b>Natural language query parser</b>
+        ► Intent classification (search, POI, compare, filter_update)
+        ► Structured filter extraction from natural language
+        ► AI filter tagging (pet-friendly, modern-kitchen, quiet-neighborhood)
+        ► Region lookup with case-insensitive database matching
+        ► Property reference detection
+
+        <b>Semantic search coordinator</b>
+        ► Parallel embedding generation (small + large models)
+        ► Multi-index vector search
+        ► PostgreSQL property fetching with region filtering
+        ► Result deduplication and scoring
+        ► Google Places API integration for POI queries
+
+
+  <h1 class="text-lg font-bold text-stone-200">🗺️ Maps Integration</h1>
+
+        <b>Google Maps API</b>
+        ► Places API for POI proximity search
+        ► Geocoding for address validation
+        ► Distance matrix calculations
+        ► Walking time estimations
+        ► Place details with ratings and reviews
+
+  <h1 class="text-lg font-bold text-stone-200">🏗️ Architecture & Backend</h1>
+
+        <b>Dual Architecture System</b>
+
+        <b>Express.js API (Node.js)</b>
+        ► REST endpoints for property CRUD operations
+        ► JWT + Supabase Auth integration
+        ► Socket.io real-time chat with Redis pub/sub
+        ► Worker clustering with per-worker connection pools
+        ► CSRF protection and security middleware
+
+        <b>Deno Edge Functions (Supabase)</b>
+        ► Serverless AI chat and semantic search
+        ► Low-latency edge deployment
+        ► Multi-tier caching strategy (in-memory FIFO)
+        ► Automatic scaling and cold start optimization
+
+        <b>Database & Storage</b>
+        ► PostgreSQL with PostGIS for geospatial queries
+        ► Kysely type-safe query builder
+        ► Connection pooler for production scaling
+        ► Supabase Storage for property images
+        ► Redis for caching and pub/sub
+
+        <b>Performance Optimizations</b>
+        ► Multi-tier caching (embeddings: 24h, properties: 10min, searches: 5min)
+        ► Batch parallel processing for image embeddings
+        ► Debounced search inputs (500ms)
+        ► Query result prefetching on hover
+        ► localStorage persistence for chat history
+
+
+        <h1 class="text-lg font-bold text-stone-200">🎨 Frontend Stack</h1>
+
+        <b>React 19 + TypeScript + Vite</b>
+        ► Modern React patterns with hooks
+        ► Type-safe development with strict TypeScript
+        ► Fast HMR with Vite
+
+        <b>State Management</b>
+        ► TanStack Query v5 for server state
+        ► Optimistic updates for favorites and offers
+        ► Smart caching with staleTime configuration
+        ► URL params as single source of truth for search state
+
+        <b>UI & Styling</b>
+        ► Tailwind CSS for utility-first styling
+        ► ShadcnUI + Radix UI component library
+        ► Custom design system (Montserrat, Saira, Inter fonts)
+        ► Responsive design with mobile-first approach
+
+        <b>Key Features</b>
+        ► AI-powered conversational search with persistent chat history
+        ► Real-time property chat with Socket.io
+        ► Interactive property cards with clickable AI chat links
+        ► Region-based and radius-based search
+        ► Advanced filters modal with amenities and conditions
+        ► Favorite properties with optimistic updates
+        ► Offer negotiation system
+        ► Visit scheduling
+
+
+  <h1 class="text-lg font-bold text-stone-200">🔧 Developer Experience</h1>
+
+        <b>Type Safety</b>
+        ► End-to-end TypeScript coverage
+        ► Generated database types with Kysely
+        ► Zod runtime validation
+        ► Strict ESLint + Prettier configuration
+
+        <b>Build & Deploy</b>
+        ► Path aliases for clean imports (@/, @controllers/, @services/)
+        ► Environment-based configuration
+        ► Hot reload in development
+        ► Production clustering with graceful shutdown
+
+        <b>Testing & Monitoring</b>
+        ► Detailed console logging in edge functions
+        ► Winston structured logging in Express
+        ► Performance tracking (intent classification, cache hit rates)
+        ► Error boundary handling
+
+
+        <h1 class="text-lg font-bold text-stone-200">📊 Technical Metrics</h1>
+
+        ► AI Response Time: <3 seconds end-to-end
+        ► Embedding Processing: 5-10 minutes for 50 images (batch parallel)
+        ► Vector Search: <500ms across 3 Pinecone indexes
+        ► Cache Hit Rate: ~70% reduction in repeated queries
+        ► Database Queries: Type-safe with <100ms response time
+        ► Real-time Chat: Sub-second message delivery with Socket.io
+
+
+        <h1 class="text-lg font-bold text-stone-200">🚀 Innovative Features</h1>
+
+              1. AI Chat with Memory - Persistent chat history using localStorage, property reference context
+              2. Semantic Visual Search - "Show me properties with marble kitchens" using image embeddings
+              3. Natural Language Regions - "Properties in Avenidas Novas" auto-completes region selection
+              4. Smart Filter Detection - Extracts price, bedrooms, amenities from conversational queries
+              5. Clickable Property Links in Chat - Navigate to property details directly from AI responses
+              6. Batch Parallel Embedding - Process 50 images in 5-10 minutes with deduplication
+              7. Multi-Index Vector Search - Combines text, image, and document embeddings for comprehensive results
+              8. POI Proximity Intelligence - "Properties near hospitals" with walking distance calculations`,
+    company: "Rabid Fish Labs LLC",
+    link: ["https://real-estate-vite-opal.vercel.app/search?draw=true"],
+    more: ["Onde"],
+  },
+  {
+    date: "August 2025 - Now",
+    title:
+      "Founder & Mobile AI Engineer (React Native, Supabase & AI for HealthTech)",
+    description: `
+    ${sugarSync}:\n
+    AI-powered diabetes management ecosystem focused on personalized nutrition, glucose insights, and doctor–patient collaboration.
+
+    <h1 class="text-lg font-bold text-stone-200">📱 Mobile App & UX</h1>
+
+        <b>Cross-platform app</b>
+        ► Built with React Native, Expo and TypeScript for iOS and Android
+        ► Flows for daily logging of meals, glucose readings and physical activity
+        ► Mobile-first UX for quick entry, reminders and progress tracking
+
+        <b>Patient & doctor views</b>
+        ► Separate experiences for patients and clinicians
+        ► Clinician dashboards to review trends, notes and alerts
+        ► Secure sharing of records for remote follow-up
+
+    <h1 class="text-lg font-bold text-stone-200">🤖 AI, Nutrition & Glucose Insights</h1>
+
+        <b>Food & nutrition intelligence</b>
+        ► Integration with USDA and Edamam APIs for macronutrients and carb counting
+        ► Voice- and text-based food input for faster logging
+        ► Normalization of ingredients and portions into structured nutritional data
+
+        <b>Predictive glucose insights</b>
+        ► Pinecone + OpenAI embeddings to correlate meals, activity and glucose history
+        ► RAG-style retrieval of similar days/meals to suggest risk or expected response
+        ► Smart suggestions for meal timing and composition based on historical patterns
+
+    <h1 class="text-lg font-bold text-stone-200">☁️ Backend, Data & Security</h1>
+
+        <b>Supabase platform</b>
+        ► PostgreSQL schema for users, clinicians, logs, alerts and recommendations
+        ► Row Level Security (RLS) for strict multi-tenant data isolation
+        ► Supabase Auth for account management and session handling
+
+        <b>Edge Functions for AI</b>
+        ► Supabase Edge Functions (Deno) to orchestrate OpenAI calls and Pinecone queries
+        ► Serverless pipelines for nutritional analysis and glucose insight generation
+        ► Structured JSON outputs validated with Zod for type-safe APIs
+
+        <b>Security & compliance mindset</b>
+        ► Data flows modeled following HIPAA-like principles (least privilege, auditability)
+        ► Separation of PHI-like data from analytics metadata
+        ► Encrypted storage for sensitive information where applicable
+
+    <h1 class="text-lg font-bold text-stone-200">🚀 Key Features & Metrics</h1>
+
+        1. AI-assisted carb counting via USDA/Edamam with voice input
+        2. Doctor–patient shared workspace with historical context and notes
+        3. Predictive insight cards for “today’s risk” based on past days
+        4. Event-driven recommendations running on serverless Edge Functions
+        5. RLS-protected multi-tenant architecture ready for clinical pilots
+    `,
+    company: "Eir Labs LLC",
+    link: ["https://eirlabs.dev"],
+    more: ["Eir Labs LLC"],
+  },
+  {
+    date: "August 2024 - June 2025",
+    title:
+      "AI Engineer and Fullstack Mobile Developer (React native - expo, supabase and AI",
     // projectName: "Pursuit,Rentscape",
     description: `
     ${sparkncoProject}:\n
@@ -31,7 +294,10 @@ const EXPERIENCE = [
       ► Use of AI reasoning models that allow function_calling and structured data output at the same time.
       ► Vector database management and client creation for Pinecone using Supabase's Edge functions with Deno`,
     company: "Spark n Co",
-    link: ["https://www.instagram.com/pursuitai.io/", "https://www.rentscape.co/" ],
+    link: [
+      "https://www.instagram.com/pursuitai.io/",
+      "https://www.rentscape.co/",
+    ],
     more: ["PursuitAI", "Rentscape"],
   },
   {

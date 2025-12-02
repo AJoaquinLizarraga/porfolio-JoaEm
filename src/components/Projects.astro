@@ -89,6 +89,48 @@ interface ProjectCardProps {
 
 const PROJECTS: ProjectCardProps[] = [
   {
+    title: "Onde",
+    description: `A full-stack real estate marketplace featuring advanced AI search capabilities, semantic property discovery, and intelligent chat assistance. Built with a modern dual-architecture approach combining traditional REST APIs with serverless edge functions.`,
+    link: "https://real-estate-vite-opal.vercel.app/",
+    // github: "https://github.com/AJoaquinLizarraga/PursuitMobile/tree/Joaquin",
+    image: [
+      "/projects/Onde/Home.png",
+      "/projects/Onde/mapChat.png",
+      "/projects/Onde/propertyChat1.png",
+      "/projects/Onde/propertyChat2.webp",
+    ],
+    tags: [
+      TAGS.REACT,
+      TAGS.AI,
+      TAGS.PINECONE,
+      TAGS.SUPABASE,
+      TAGS.TAILWIND,
+      TAGS.TYPESCRIPT,
+    ],
+    app: false,
+  },
+  {
+    title: "SugarSync",
+    description: `A cross-platform, AI-powered diabetes management app focused on personalized nutrition, glucose insights, and doctor–patient collaboration. Built with React Native, Expo and Supabase, it integrates USDA and Edamam APIs for carb counting, voice-based food logging, and structured nutritional analysis. Using OpenAI and Pinecone, SugarSync correlates meals, activity and historical glucose data to surface predictive insights and “today’s risk” cards, all on top of a secure, RLS-protected multi-tenant backend ready for clinical use.`,
+    // link: "https://real-estate-vite-opal.vercel.app/",
+    // github: "https://github.com/AJoaquinLizarraga/PursuitMobile/tree/Joaquin",
+    image: [
+      "/projects/SugarSync/main.webp",
+      "/projects/SugarSync/onboarding.webp",
+      "/projects/SugarSync/views.webp",
+      "/projects/SugarSync/config.webp",
+    ],
+    tags: [
+      TAGS.REACTNATIVE,
+      TAGS.AI,
+      TAGS.PINECONE,
+      TAGS.SUPABASE,
+      TAGS.TAILWIND,
+      TAGS.TYPESCRIPT,
+    ],
+    app: false,
+  },
+  {
     title: "Pursuit",
     description: `A mobile application developed with React Native and Expo, integrating Supabase for backend services and authentication, and utilizing OpenAI.
 
@@ -217,7 +259,7 @@ The solution offers an intuitive, personalized search experience, streamlining t
           {tags &&
             tags.map((tag) => {
               return (
-                <li >
+                <li>
                   <span
                     class={`flex gap-x-2 rounded-full text-xs ${tag.class}  py-1 px-2`}>
                     <tag.icon class="size-4" />
@@ -228,7 +270,7 @@ The solution offers an intuitive, personalized search experience, streamlining t
             })}
         </ul>
         {typeof image === "string" ? (
-          <div class="flex max-w-2xl  mx-auto">
+          <div class="flex max-w-2xl mx-auto">
             <div class="relative w-full">
               <div class="overflow-hidden relative h-64 rounded-lg sm:h-80 xl:h-96 2xl:h-[480px] z-20">
                 <img

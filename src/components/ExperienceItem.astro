@@ -19,6 +19,8 @@ const formattedParagraphs = paragraphs.map((para) =>
     .replace(/(Pursuit:)/g, "<strong >$1</strong>")
     .replace(/(Rentscape:)/g, "<strong>$1</strong>")
     .replace(/(Spark n Co:)/g, "<strong>$1</strong>")
+    .replace(/(Onde:)/g, "<strong>$1</strong>")
+    .replace(/(SugarSync:)/g, "<strong>$1</strong>")
 );
 ---
 
@@ -33,7 +35,7 @@ const formattedParagraphs = paragraphs.map((para) =>
   >
 </h3>
 <div
-  class="mb-4 [&>p>strong]:text-green-300 [&>p>strong]:font-semibold [&>p>strong]:text-lg text-base font-normal text-gray-200 text-pretty">
+  class="mb-4 [&>p>strong]:text-green-300 [&>p>b]:text-indigo-600 [&>p>strong]:font-semibold [&>p>b]:font-semibold [&>p>strong]:text-lg [&>p>b]:text-lg text-base font-normal text-gray-200 text-pretty">
   {
     formattedParagraphs.map((para, idx) => (
       // Usamos set:html para que se interprete el HTML dentro del párrafo

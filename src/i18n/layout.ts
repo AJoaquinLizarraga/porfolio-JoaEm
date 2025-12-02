@@ -12,7 +12,7 @@ const layout_content = {
       "Contrata a Joaquín para desarrollar tus aplicaciones móviles y web, y para implementar soluciones de IA.",
   },
   en: {
-    "layout.title": "Portfolio JoaEm - Mobile and AI Engineer",
+    "layout.title": "Portfolio JoaEm - AI Engineer and Mobile Developer",
     "layout.description":
       "Hire Joaquin to develop your mobile and web applications, and to implement AI solutions.",
   },
