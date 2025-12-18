@@ -1,6 +1,13 @@
 ---
+import { useTranslations, type Locale } from "../i18n/index";
+
+interface Props {
+  currentLocale: Locale;
+}
+
+const { currentLocale } = Astro.props;
+const t = useTranslations(currentLocale);
 const currentYear = new Date().getFullYear();
-const { currentLocale, getRelativeLocaleUrl } = Astro.props;
 ---
 
 <footer
@@ -19,14 +26,14 @@ const { currentLocale, getRelativeLocaleUrl } = Astro.props;
       class="flex flex-wrap items-center mt-3 text-sm font-medium text-white/90 sm:mt-0">
       <li>
         <a
-          href={getRelativeLocaleUrl(currentLocale, "/#about")}
-          class="hover:underline me-4 md:me-6">About</a
+          href={`/${currentLocale}#about`}
+          class="hover:underline me-4 md:me-6">{t("nav.about")}</a
         >
       </li>
       <li>
         <a
-          href={getRelativeLocaleUrl(currentLocale, "/#")}
-          class="hover:underline">Contact</a
+          href={`/${currentLocale}#contact`}
+          class="hover:underline">{t("nav.contact")}</a
         >
       </li>
     </ul>

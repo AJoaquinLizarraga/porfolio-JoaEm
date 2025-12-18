@@ -1,5 +1,13 @@
 ---
+import { useTranslations, type Locale } from "../i18n/index";
 import ExperienceItem from "./ExperienceItem.astro";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const pursuitProject = "Pursuit";
 const rentscapeProject = "Rentscape";
@@ -7,13 +15,8 @@ const sparkncoProject = "Spark n Co";
 const ondeProject = "Onde";
 const sugarSync = "SugarSync";
 
-const EXPERIENCE = [
-  {
-    date: "July 2025 - Now",
-    title:
-      "AI Engineer and Fullstack Mobile Developer (React native - expo, supabase and AI)",
-    // projectName: "Pursuit,Rentscape",
-    description: `
+// Technical descriptions for main projects (same in both languages as they are technical)
+const ondeDescription = `
     ${ondeProject}:\n
     AI-Powered Real Estate Platform
       A full-stack real estate marketplace featuring advanced AI search capabilities, semantic property discovery, and intelligent chat assistance. Built with a modern dual-architecture approach combining traditional REST APIs with serverless edge functions.
@@ -202,16 +205,9 @@ const EXPERIENCE = [
               5. Clickable Property Links in Chat - Navigate to property details directly from AI responses
               6. Batch Parallel Embedding - Process 50 images in 5-10 minutes with deduplication
               7. Multi-Index Vector Search - Combines text, image, and document embeddings for comprehensive results
-              8. POI Proximity Intelligence - "Properties near hospitals" with walking distance calculations`,
-    company: "Rabid Fish Labs LLC",
-    link: ["https://www.onde.pt/"],
-    more: ["Onde"],
-  },
-  {
-    date: "August 2025 - Now",
-    title:
-      "Founder & Mobile AI Engineer (React Native, Supabase & AI for HealthTech)",
-    description: `
+              8. POI Proximity Intelligence - "Properties near hospitals" with walking distance calculations`;
+
+const sugarSyncDescription = `
     ${sugarSync}:\n
     AI-powered diabetes management ecosystem focused on personalized nutrition, glucose insights, and doctor–patient collaboration.
 
@@ -260,20 +256,12 @@ const EXPERIENCE = [
 
         1. AI-assisted carb counting via USDA/Edamam with voice input
         2. Doctor–patient shared workspace with historical context and notes
-        3. Predictive insight cards for “today’s risk” based on past days
+        3. Predictive insight cards for "today's risk" based on past days
         4. Event-driven recommendations running on serverless Edge Functions
         5. RLS-protected multi-tenant architecture ready for clinical pilots
-    `,
-    company: "Eir Labs LLC",
-    link: ["https://eirlabs.dev"],
-    more: ["Eir Labs LLC"],
-  },
-  {
-    date: "August 2024 - June 2025",
-    title:
-      "AI Engineer and Fullstack Mobile Developer (React native - expo, supabase and AI",
-    // projectName: "Pursuit,Rentscape",
-    description: `
+    `;
+
+const sparkCoDescription = `
     ${sparkncoProject}:\n
     In this project, I contributed to integrating an AI-powered chat solution using OpenAI and DeepSeek to automate and streamline Jira ticket management.
     The system leverages advanced natural language processing to interpret user inquiries in real time, automatically generating tickets, creating incident reports, and dispatching notifications without manual intervention.
@@ -292,7 +280,29 @@ const EXPERIENCE = [
       The solution offers an intuitive and personalized search experience based on a mathematical calculation, streamlining the decision-making process in the real estate market.
       In the process I instructed the team on the following:
       ► Use of AI reasoning models that allow function_calling and structured data output at the same time.
-      ► Vector database management and client creation for Pinecone using Supabase's Edge functions with Deno`,
+      ► Vector database management and client creation for Pinecone using Supabase's Edge functions with Deno`;
+
+const EXPERIENCE = [
+  {
+    date: t("exp.onde.date"),
+    title: t("exp.onde.title"),
+    description: ondeDescription,
+    company: "Rabid Fish Labs LLC",
+    link: ["https://www.onde.pt/"],
+    more: ["Onde"],
+  },
+  {
+    date: t("exp.sugarsync.date"),
+    title: t("exp.sugarsync.title"),
+    description: sugarSyncDescription,
+    company: "Eir Labs LLC",
+    link: ["https://eirlabs.dev"],
+    more: ["Eir Labs LLC"],
+  },
+  {
+    date: t("exp.sparkco.date"),
+    title: t("exp.sparkco.title"),
+    description: sparkCoDescription,
     company: "Spark n Co",
     link: [
       "https://www.instagram.com/pursuitai.io/",
@@ -301,57 +311,50 @@ const EXPERIENCE = [
     more: ["PursuitAI", "Rentscape"],
   },
   {
-    date: "February 2024 - August 2024",
-    title: "HA - Henry Assistant",
-    description:
-      "The responsibilities are: Pre-select new Teach Assistants. Train them in soft skills. Conduct role-plays, where the pre-selected candidates participate in a simulated situation. Finally choose the finalists, who will be in charge of the incoming students to Henry's bootcamp.",
+    date: t("exp.ha.date"),
+    title: t("exp.ha.title"),
+    description: t("exp.ha.description"),
     company: "Henry",
     link: "https://www.soyhenry.com/",
     more: "SoyHenry",
   },
   {
-    date: "August 2023 - January 2024",
-    title: "Software Engineer",
-    description:
-      "Develop a dynamic page using AWS (DynamoDB, S3, Lambda), NextJs, Zustand, Tailwind, MaterialTailwind Integrate rich text markdown system and multimedia file management. Authenticate with token and controlled forms. Develop with SCRUM methodologies, exercise GitFlow, coordinate with Notion task board. Optimize site functionality, achieve agile and dynamic user interface, achieve attractive aesthetics according to home page standards and representative of a company that provides technology services. Propose creative ideas and solutions for process improvement.",
+    date: t("exp.bocancorp.date"),
+    title: t("exp.bocancorp.title"),
+    description: t("exp.bocancorp.description"),
     company: "Bocancorp",
     link: "https://www.bocancorporation.com/en",
     more: "Bocancorp",
   },
   {
-    date: "July 2023 - September 2023",
-    title: "TA - Teaching Assistant for students at Henry Bootcamp",
-    description:
-      "Main tasks: Coordinate a group of new joining students throughout the whole bootcamp experience. Guide students in the first steps of the course and clarify their doubts. Provide assistance in solving exercises and encourage group teamwork (Pair Programming). Suggest ideas to improve the Bootcamp processes. Promote collaboration and build community within the students",
+    date: t("exp.ta.date"),
+    title: t("exp.ta.title"),
+    description: t("exp.ta.description"),
     company: "Henry",
     link: "https://www.soyhenry.com/",
     more: "SoyHenry",
   },
   {
-    date: "July 2023 - August 2023",
-    title: "Web Developer",
-    description:
-      "In this position, I started a fullstack project from scratch, as part of my own bootcamp project, using React, Redux, Html and Css for the frontend; node,js and express with morgan as middelware for the backend, with the challenge of a faulty API, with frequent crashes, and updates that changed the structure, here I learned how to create my own API on github (https://github.com/AJoaquinLizarraga/Food-API-mine.git) to make support requests, and structure the code for proper error handling and to work whether the api is down or not: https://github.com/AJoaquinLizarraga/Food-app.git",
+    date: t("exp.foodapp.date"),
+    title: t("exp.foodapp.title"),
+    description: t("exp.foodapp.description"),
     company: "Henry",
     link: "https://github.com/AJoaquinLizarraga/Food-app.git",
     more: "Food App - Repository",
   },
   {
-    date: "June 2023 - July 2023",
-    title: "Web Developer",
-    description:
-      "I started by integrating the knowledge of the bootcamp in the frontend such as React, Redux, Html and Css and in the backend with express in a bootcamp integrator project, which was modified in various ways throughout the bootcamp itself, advancing in the functional part, and in the cards it is possible to see the visual progress: https://github.com/AJoaquinLizarraga/rick-n-morty.git",
+    date: t("exp.ricknmorty.date"),
+    title: t("exp.ricknmorty.title"),
+    description: t("exp.ricknmorty.description"),
     company: "Henry",
     link: "https://github.com/AJoaquinLizarraga/rick-n-morty.git",
     more: "Rick n Morty - Repository",
   },
   {
-    date: "2019 - 2022",
-    title: "3d Printer programmer and 3d designer",
-    description:
-      "I programmed, updated and repaired 3d printers FMDI programmed, updated and repaired 3d printers FMD",
+    date: t("exp.3dprinter.date"),
+    title: t("exp.3dprinter.title"),
+    description: t("exp.3dprinter.description"),
     company: "Henry",
-    // link: ["https://github.com/AJoaquinLizarraga/rick-n-morty.git"],
     more: "",
   },
 ];

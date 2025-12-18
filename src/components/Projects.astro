@@ -1,4 +1,5 @@
 ---
+import { useTranslations, type Locale } from "../i18n/index";
 import GithubIcon from "../icons/Github.astro";
 import NextjsIcon from "../icons/Nextjs.astro";
 import WebIcon from "../icons/Web.astro";
@@ -14,6 +15,13 @@ import SupabaseIcon from "../icons/Supabase.astro";
 import PineconeIcon from "../icons/Pinecone.astro";
 import LinkButton from "./LinkButton.astro";
 import Carrousel from "./Carrousel.astro";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const TAGS = {
   NEXT: {
@@ -72,14 +80,16 @@ const TAGS = {
     icon: PineconeIcon,
   },
 };
+
 interface Tag {
   name: string;
   class: string;
-  icon: typeof NextjsIcon | typeof TailwindCSSIcon; // o cualquier tipo de icono que estés utilizando
+  icon: typeof NextjsIcon | typeof TailwindCSSIcon;
 }
+
 interface ProjectCardProps {
   title: string;
-  description?: string;
+  descriptionKey: keyof (typeof import("../i18n/index"))["ui"]["en"];
   link?: string;
   github?: string;
   image: string | string[];
@@ -90,9 +100,8 @@ interface ProjectCardProps {
 const PROJECTS: ProjectCardProps[] = [
   {
     title: "Onde",
-    description: `A full-stack real estate marketplace featuring advanced AI search capabilities, semantic property discovery, and intelligent chat assistance. Built with a modern dual-architecture approach combining traditional REST APIs with serverless edge functions.`,
+    descriptionKey: "project.onde.description",
     link: "https://real-estate-vite-opal.vercel.app/",
-    // github: "https://github.com/AJoaquinLizarraga/PursuitMobile/tree/Joaquin",
     image: [
       "/projects/Onde/Home.png",
       "/projects/Onde/mapChat.png",
@@ -111,9 +120,7 @@ const PROJECTS: ProjectCardProps[] = [
   },
   {
     title: "SugarSync",
-    description: `A cross-platform, AI-powered diabetes management app focused on personalized nutrition, glucose insights, and doctor–patient collaboration. Built with React Native, Expo and Supabase, it integrates USDA and Edamam APIs for carb counting, voice-based food logging, and structured nutritional analysis. Using OpenAI and Pinecone, SugarSync correlates meals, activity and historical glucose data to surface predictive insights and “today’s risk” cards, all on top of a secure, RLS-protected multi-tenant backend ready for clinical use.`,
-    // link: "https://real-estate-vite-opal.vercel.app/",
-    // github: "https://github.com/AJoaquinLizarraga/PursuitMobile/tree/Joaquin",
+    descriptionKey: "project.sugarsync.description",
     image: [
       "/projects/SugarSync/main.webp",
       "/projects/SugarSync/onboarding.webp",
@@ -132,12 +139,7 @@ const PROJECTS: ProjectCardProps[] = [
   },
   {
     title: "Pursuit",
-    description: `A mobile application developed with React Native and Expo, integrating Supabase for backend services and authentication, and utilizing OpenAI.
-
-It implements a Retrieval Augmented Generation (RAG) model with Pinecone to generate personalized training and nutritional plans based on each user's personal data.
-
-The application combines AI and data analysis to provide tailored recommendations that optimize individual performance and overall well-being.`,
-    // link: "https://www.rentscape.co/",
+    descriptionKey: "project.pursuit.description",
     github: "https://github.com/AJoaquinLizarraga/PursuitMobile/tree/Joaquin",
     image: [
       "/projects/Pursuit/Pursuit3.webp",
@@ -159,13 +161,8 @@ The application combines AI and data analysis to provide tailored recommendation
   },
   {
     title: "Rentscape",
-    description: `An integration within the Rentscape platform that features an AI-powered chat solution.
-
-This system leverages interactive chat combined with function calling to generate precise data, which is then used to perform searches on Pinecone for the best rental properties.
-
-The solution offers an intuitive, personalized search experience, streamlining the decision-making process in the real estate market.`,
+    descriptionKey: "project.rentscape.description",
     link: "https://www.rentscape.co/",
-    // github: "https://github.com/AJoaquinLizarraga/PokedexApp-ReactNative.git",
     image: [
       "/projects/Rentscape/rentscapechat.webp",
       "/projects/Rentscape/rentscapeCarrousel.webp",
@@ -182,8 +179,7 @@ The solution offers an intuitive, personalized search experience, streamlining t
   },
   {
     title: "Pokedex App",
-    description:
-      "App developed with React Native and Expo using the Pokemon api, to display information about pokemon. Data persistence is handled with the AsyncStorage library.",
+    descriptionKey: "project.pokedex.description",
     link: "https://drive.google.com/file/d/1YFbbOr6ijkfd_z4Uv9j8WQSwuhueabli/view?usp=drive_link",
     github: "https://github.com/AJoaquinLizarraga/PokedexApp-ReactNative.git",
     image: [
@@ -198,8 +194,7 @@ The solution offers an intuitive, personalized search experience, streamlining t
   },
   {
     title: "Nasa App",
-    description:
-      "I developed an app with react native CLI and typescript to view the pictures taken by the Hubble telescope provided by NASA's 'Astronomy Picture of the Day' api.",
+    descriptionKey: "project.nasa.description",
     link: "",
     github: "https://github.com/AJoaquinLizarraga/NasaApp.git",
     image: [
@@ -211,8 +206,7 @@ The solution offers an intuitive, personalized search experience, streamlining t
   },
   {
     title: "Pomodoro App",
-    description:
-      "App developed with React Native Expo and Tailwind is a simple but effective tool to improve productivity. With a minimalist and easy to use interface, this application allows users to divide their time into work and rest periods using the Pomodoro technique.",
+    descriptionKey: "project.pomodoro.description",
     link: "",
     github: "https://github.com/AJoaquinLizarraga/PomodoroAppMobile.git",
     image: "/projects/PomodoroApp/MainScreens.webp",
@@ -221,8 +215,7 @@ The solution offers an intuitive, personalized search experience, streamlining t
   },
   {
     title: "Blog Web",
-    description:
-      "App Dynamic blog delivered for incorporation to the company website. Collaboration between students applying the “scrum” methodology. User Interface built on Next.js 13, with Zustand implementation for global state management. Server built on AWS Lambda, configuring AWS Api Gateway as event trigger. Image storage system on AWS s3 Buckets.",
+    descriptionKey: "project.blog.description",
     link: "https://www.bocancorporation.com",
     github: "",
     image: [
@@ -251,10 +244,10 @@ The solution offers an intuitive, personalized search experience, streamlining t
 
 <section class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github, app }) => (
+    PROJECTS.map(({ image, title, descriptionKey, tags, link, github, app }) => (
       <article>
         <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
-        <p class="text-lg mb-4 text-pretty">{description}</p>
+        <p class="text-lg mb-4 text-pretty whitespace-pre-line">{t(descriptionKey)}</p>
         <ul class="flex gap-x-4 gap-y-2 flex-wrap sm:flex-wrap md:flex-row lg:flex-row mb-4">
           {tags &&
             tags.map((tag) => {
@@ -288,7 +281,7 @@ The solution offers an intuitive, personalized search experience, streamlining t
           {github && (
             <LinkButton link={github}>
               <GithubIcon class="size-6 mr-1" />
-              Watch source code
+              {t("projects.viewCode")}
             </LinkButton>
           )}
           {link && (
@@ -296,12 +289,12 @@ The solution offers an intuitive, personalized search experience, streamlining t
               {app === true ? (
                 <>
                   <AndroidIcon class="size-6 mr-1" />
-                  Download Android App
+                  {t("projects.downloadApp")}
                 </>
               ) : (
                 <>
                   <WebIcon class="size-6 mr-1" />
-                  Go to web site
+                  {t("projects.goToWeb")}
                 </>
               )}
             </LinkButton>

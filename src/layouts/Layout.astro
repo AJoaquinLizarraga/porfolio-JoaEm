@@ -2,12 +2,15 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "@fontsource-variable/onest";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Locale } from "../i18n/index";
+import { ViewTransitions } from "astro:transitions";
+
 interface Props {
   title: string;
   description: string;
 }
-const currentLocale = Astro.currentLocale || "en";
+
+const currentLocale = (Astro.currentLocale || "en") as Locale;
 const { description, title } = Astro.props;
 ---
 
@@ -20,27 +23,15 @@ const { description, title } = Astro.props;
     <link rel="icon" type="image/svg" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
-    <!-- <div
-      class="fixed top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-5%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    > -->
-    <!-- <div class="fixed z-[-2] h-full w-full bg-neutral-900">
-      <div
-        class="absolute inset-0 bg-fuchsia-400 bg-[size:20px_20px] opacity-20 blur-[100px]"
-      >
-      </div>
-    </div> -->
     <div
       class="fixed inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#7c5bf7_100%)]">
     </div>
-    <Header
-      currentLocale={currentLocale}
-      getRelativeLocaleUrl={getRelativeLocaleUrl}
-    />
+    <Header currentLocale={currentLocale} />
     <slot />
-    <Footer currentLocale={currentLocale}
-    getRelativeLocaleUrl={getRelativeLocaleUrl} />
+    <Footer currentLocale={currentLocale} />
   </body>
 
   <style is:global>
@@ -52,7 +43,6 @@ const { description, title } = Astro.props;
       scroll-behavior: smooth;
     }
     body {
-      /* background: #050505; */
       background: #292727;
       display: flex;
       flex-direction: column;

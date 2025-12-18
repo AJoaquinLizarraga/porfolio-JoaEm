@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { useTranslations, type Locale } from "../../i18n/index";
 
 import AboutMe from "../../components/AboutMe.astro";
 import Badge from "../../components/Badge.astro";
@@ -15,35 +16,32 @@ import Projects from "../../components/Projects.astro";
 import SectionContainer from "../../components/SectionContainer.astro";
 import SocialPill from "../../icons/SocialPill.astro";
 import UserIcon from "../../icons/User.astro";
+
+const lang: Locale = "es";
+const t = useTranslations(lang);
 ---
 
-<Layout
-  title="Portfolio JoaEm - AI Engineer and Mobile Developer"
-  description="Hire Joaquin to develop your mobile and web applications.">
+<Layout title={t("layout.title")} description={t("layout.description")}>
   <main class="px-4">
     <SectionContainer id="/#" class="py-28 pb-32">
-      <!-- <img src="JoaEm.jpeg" alt="JoaEm photo" class="rounded-full size-16 mx-2" /> -->
       <h1
         class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-        Hey, I am Joaquin
+        {t("hero.greeting")}
         <a
           class="flex justify-center items-center hover:scale-105"
           href="https://www.linkedin.com/in/joaquin-lizarraga-965637134/"
           target="_blank"
           rel="noopener">
-          <Badge>Available for be hired</Badge>
+          <Badge>{t("hero.badge")}</Badge>
         </a>
       </h1>
       <h2 class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
-        <span class="text-yellow-300"
-          >AI Engineer and Mobile Developer, and Diabetes content creator.</span
-        >
+        <span class="text-yellow-300">{t("hero.role")}</span>
         <span
           class="bg-gradient-to-r from-blue-500 via-white to-blue-500 text-transparent bg-clip-text"
-          >From Córdoba, Argentina.</span
+          >{t("hero.location")}</span
         >
-        <span class="opacity-75">Specialized in taking your ideas to code.</span
-        >
+        <span class="opacity-75">{t("hero.tagline")}</span>
       </h2>
       <nav class="flex gap-4 mt-8 flex-wrap">
         <SocialPill
@@ -64,33 +62,33 @@ import UserIcon from "../../icons/User.astro";
           joaem.lizarraga@gmail.com
         </SocialPill>
         <SocialPill
-          href="./assets/CVJoaquinEmanuelLizarraga.pdf"
-          download="Joaquin Emanuel Lizarraga - en">
+          href="./assets/CV-es.pdf"
+          download="Joaquin Emanuel Lizarraga - es">
           <CVIcon class="size-4 md:size-6" />
-          Download CV
+          {t("hero.downloadCV")}
         </SocialPill>
       </nav>
     </SectionContainer>
     <SectionContainer id="experience">
       <h2 class="text-3xl font-semibold mb-3 flex gap-x-2 items-center">
         <BriefcaseIcon class="size-8" />
-        Work Experience
+        {t("section.experience")}
       </h2>
-      <Experience />
+      <Experience lang={lang} />
     </SectionContainer>
     <SectionContainer id="projects">
       <h2 class="text-3xl font-semibold mb-3 flex gap-x-2 items-center">
         <CodeSandBoxIcon class="size-8" />
-        Projects
+        {t("section.projects")}
       </h2>
-      <Projects />
+      <Projects lang={lang} />
     </SectionContainer>
     <SectionContainer id="about">
       <h2 class="text-3xl font-semibold mb-3 flex gap-x-2 items-center">
         <UserIcon class="size-8" />
-        About Me
+        {t("section.about")}
       </h2>
-      <AboutMe />
+      <AboutMe lang={lang} />
     </SectionContainer>
   </main>
 </Layout>

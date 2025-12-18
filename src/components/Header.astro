@@ -1,13 +1,21 @@
 ---
-const { currentLocale, getRelativeLocaleUrl } = Astro.props;
+import { useTranslations, type Locale } from "../i18n/index";
+import LanguageIcon from "../icons/Language.astro";
+import { fade } from "astro:transitions";
 
-console.log(getRelativeLocaleUrl(currentLocale, "/experience"));
+interface Props {
+  currentLocale: Locale;
+}
+
+const { currentLocale } = Astro.props;
+const t = useTranslations(currentLocale);
+
+const otherLocale = currentLocale === "es" ? "en" : "es";
+const otherLocalePath = currentLocale === "es" ? "/en" : "/es";
 ---
 
 <header
   class="flex justify-center items-center py-6 mx-auto sticky top-0 w-full xl:w-[1120px] z-40">
-  <!-- <img src="JoaEm.jpeg" alt="JoaEm photo" class="rounded-full size-16 mx-2" /> -->
-
   <nav
     class={`
       border border-black
@@ -17,28 +25,31 @@ console.log(getRelativeLocaleUrl(currentLocale, "/experience"));
       `}>
     <a
       class="hover:bg-white/10 rounded-full px-3 transition"
-      href={getRelativeLocaleUrl(currentLocale, "/#").replace(/\/$/, "")}
-      >Home
+      href={`/${currentLocale}#`}
+      >{t("nav.home")}
     </a>
     <a
       class="hover:bg-white/10 rounded-full px-3 transition"
-      href={getRelativeLocaleUrl(currentLocale, "/#experience").replace(
-        /\/$/,
-        ""
-      )}>Experience</a
-    >
-
-    <a
-      class="hover:bg-white/10 rounded-full px-3 transition"
-      href={getRelativeLocaleUrl(currentLocale, "/#projects").replace(/\/$/, "")}>Projects</a
+      href={`/${currentLocale}#experience`}>{t("nav.experience")}</a
     >
     <a
       class="hover:bg-white/10 rounded-full px-3 transition"
-      href={getRelativeLocaleUrl(currentLocale, "/#about").replace(/\/$/, "")}>About</a
+      href={`/${currentLocale}#projects`}>{t("nav.projects")}</a
     >
     <a
       class="hover:bg-white/10 rounded-full px-3 transition"
-      href={getRelativeLocaleUrl(currentLocale, "/#").replace(/\/$/, "")}>Contact</a
+      href={`/${currentLocale}#about`}>{t("nav.about")}</a
+    >
+    <a
+      class="hover:bg-white/10 rounded-full px-3 transition"
+      href={`/${currentLocale}#contact`}>{t("nav.contact")}</a
+    >
+    <a
+      class="rounded-full px-3 transition hover:bg-white/10"
+      href={otherLocalePath}
+      transition:name="language-switcher"
+      transition:animate={fade({ duration: "0.8s" })}
+      ><LanguageIcon width="28" height="28" color="white" /></a
     >
   </nav>
 </header>
