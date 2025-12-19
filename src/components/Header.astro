@@ -1,7 +1,6 @@
 ---
 import { useTranslations, type Locale } from "../i18n/index";
 import LanguageIcon from "../icons/Language.astro";
-import { fade } from "astro:transitions";
 
 interface Props {
   currentLocale: Locale;
@@ -52,8 +51,6 @@ const otherLocalePath = currentLocale === "es" ? "/en" : "/es";
     <a
       class="rounded-full px-3 transition hover:bg-white/10"
       href={otherLocalePath}
-      transition:name="language-switcher"
-      transition:animate={fade({ duration: "0.8s" })}
       ><LanguageIcon width="28" height="28" color="white" /></a
     >
   </nav>
