@@ -101,7 +101,7 @@ const PROJECTS: ProjectCardProps[] = [
   {
     title: "Onde",
     descriptionKey: "project.onde.description",
-    link: "https://real-estate-vite-opal.vercel.app/",
+    link: "https://www.onde.pt/",
     image: [
       "/projects/Onde/Home.png",
       "/projects/Onde/mapChat.png",
@@ -178,6 +178,32 @@ const PROJECTS: ProjectCardProps[] = [
     app: false,
   },
   {
+    title: "Blog Web",
+    descriptionKey: "project.blog.description",
+    link: "https://www.bocancorporation.com",
+    github: "",
+    image: [
+      "/projects/BocancorpApp/MainScreen.webp",
+      "/projects/BocancorpApp/DetailScreen.webp",
+      "/projects/BocancorpApp/DetailScrolledScreen.webp",
+      "/projects/BocancorpApp/ActiveScreen.webp",
+      "/projects/BocancorpApp/PostScreen.webp",
+      "/projects/BocancorpApp/ProfilesScreen.webp",
+      "/projects/BocancorpApp/MDScreen.webp",
+      "/projects/BocancorpApp/StackScreen.webp",
+      "https://www.youtube.com/embed/KRTnl7txiGU?si=Q68xbzdxvZB26Tpz",
+    ],
+    tags: [
+      TAGS.JAVASCRIPT,
+      TAGS.TYPESCRIPT,
+      TAGS.REACT,
+      TAGS.NEXT,
+      TAGS.CSS,
+      TAGS.TAILWIND,
+    ],
+    app: false,
+  },
+  {
     title: "Pokedex App",
     descriptionKey: "project.pokedex.description",
     link: "https://drive.google.com/file/d/1YFbbOr6ijkfd_z4Uv9j8WQSwuhueabli/view?usp=drive_link",
@@ -213,94 +239,72 @@ const PROJECTS: ProjectCardProps[] = [
     tags: [TAGS.JAVASCRIPT, TAGS.REACTNATIVE, TAGS.CSS],
     app: true,
   },
-  {
-    title: "Blog Web",
-    descriptionKey: "project.blog.description",
-    link: "https://www.bocancorporation.com",
-    github: "",
-    image: [
-      "/projects/BocancorpApp/MainScreen.webp",
-      "/projects/BocancorpApp/DetailScreen.webp",
-      "/projects/BocancorpApp/DetailScrolledScreen.webp",
-      "/projects/BocancorpApp/ActiveScreen.webp",
-      "/projects/BocancorpApp/PostScreen.webp",
-      "/projects/BocancorpApp/ProfilesScreen.webp",
-      "/projects/BocancorpApp/MDScreen.webp",
-      "/projects/BocancorpApp/StackScreen.webp",
-      "https://www.youtube.com/embed/KRTnl7txiGU?si=Q68xbzdxvZB26Tpz",
-    ],
-    tags: [
-      TAGS.JAVASCRIPT,
-      TAGS.TYPESCRIPT,
-      TAGS.REACT,
-      TAGS.NEXT,
-      TAGS.CSS,
-      TAGS.TAILWIND,
-    ],
-    app: false,
-  },
 ];
 ---
 
 <section class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, descriptionKey, tags, link, github, app }) => (
-      <article>
-        <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
-        <p class="text-lg mb-4 text-pretty whitespace-pre-line">{t(descriptionKey)}</p>
-        <ul class="flex gap-x-4 gap-y-2 flex-wrap sm:flex-wrap md:flex-row lg:flex-row mb-4">
-          {tags &&
-            tags.map((tag) => {
-              return (
-                <li>
-                  <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class}  py-1 px-2`}>
-                    <tag.icon class="size-4" />
-                    {tag.name}
-                  </span>
-                </li>
-              );
-            })}
-        </ul>
-        {typeof image === "string" ? (
-          <div class="flex max-w-2xl mx-auto">
-            <div class="relative w-full">
-              <div class="overflow-hidden relative h-64 rounded-lg sm:h-80 xl:h-96 2xl:h-[480px] z-20">
-                <img
-                  src={image}
-                  class="relative top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
-                  alt={`Screenshot of ${title}`}
-                />
+    PROJECTS.map(
+      ({ image, title, descriptionKey, tags, link, github, app }) => (
+        <article>
+          <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
+          <p class="text-lg mb-4 text-pretty whitespace-pre-line">
+            {t(descriptionKey)}
+          </p>
+          <ul class="flex gap-x-4 gap-y-2 flex-wrap sm:flex-wrap md:flex-row lg:flex-row mb-4">
+            {tags &&
+              tags.map((tag) => {
+                return (
+                  <li>
+                    <span
+                      class={`flex gap-x-2 rounded-full text-xs ${tag.class}  py-1 px-2`}>
+                      <tag.icon class="size-4" />
+                      {tag.name}
+                    </span>
+                  </li>
+                );
+              })}
+          </ul>
+          {typeof image === "string" ? (
+            <div class="flex mx-auto lg:-mx-12 xl:-mx-20">
+              <div class="relative w-full">
+                <div class="overflow-hidden relative h-[307px] rounded-lg sm:h-[384px] xl:h-[460px] 2xl:h-[576px] z-20">
+                  <img
+                    src={image}
+                    class="relative top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
+                    alt={`Screenshot of ${title}`}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <Carrousel images={image} />
-        )}
-        <footer class="flex justify-center gap-x-4 mt-2">
-          {github && (
-            <LinkButton link={github}>
-              <GithubIcon class="size-6 mr-1" />
-              {t("projects.viewCode")}
-            </LinkButton>
+          ) : (
+            <Carrousel images={image} />
           )}
-          {link && (
-            <LinkButton link={link}>
-              {app === true ? (
-                <>
-                  <AndroidIcon class="size-6 mr-1" />
-                  {t("projects.downloadApp")}
-                </>
-              ) : (
-                <>
-                  <WebIcon class="size-6 mr-1" />
-                  {t("projects.goToWeb")}
-                </>
-              )}
-            </LinkButton>
-          )}
-        </footer>
-      </article>
-    ))
+          <footer class="flex justify-center gap-x-4 mt-2">
+            {github && (
+              <LinkButton link={github}>
+                <GithubIcon class="size-6 mr-1" />
+                {t("projects.viewCode")}
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton link={link}>
+                {app === true ? (
+                  <>
+                    <AndroidIcon class="size-6 mr-1" />
+                    {t("projects.downloadApp")}
+                  </>
+                ) : (
+                  <>
+                    <WebIcon class="size-6 mr-1" />
+                    {t("projects.goToWeb")}
+                  </>
+                )}
+              </LinkButton>
+            )}
+          </footer>
+        </article>
+      )
+    )
   }
 </section>
