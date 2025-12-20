@@ -14,14 +14,11 @@ const otherLocalePath = currentLocale === "es" ? "/en" : "/es";
 ---
 
 <header
-  class="flex justify-center items-center py-6 mx-auto sticky top-0 w-full xl:w-[1120px] z-40">
+  class="flex justify-center items-center py-4 mx-auto sticky top-0 w-full xl:w-[1120px] z-40 px-4">
+
+  <!-- Desktop Navigation -->
   <nav
-    class={`
-      border border-black
-      rounded-full px-3 py-2
-      flex flex-row items-center
-      bg-gray-200/10 dark:bg-black/50  backdrop-blur-2xl
-      `}>
+    class="hidden md:flex border border-black rounded-full px-3 py-2 flex-row items-center bg-gray-200/10 dark:bg-black/50 backdrop-blur-2xl">
     <a
       class="hover:bg-white/10 rounded-full px-3 transition"
       href={`/${currentLocale}/#`}
@@ -29,7 +26,7 @@ const otherLocalePath = currentLocale === "es" ? "/en" : "/es";
       >{t("nav.home")}
     </a>
     <a
-      class="hover:bg-white/10 rounded-full px-3 transition"
+      class="hover:bg-white/10 rounded-full px-1 transition"
       href={`/${currentLocale}/#experience`}
       data-astro-reload>{t("nav.experience")}</a
     >
@@ -54,4 +51,149 @@ const otherLocalePath = currentLocale === "es" ? "/en" : "/es";
       ><LanguageIcon width="28" height="28" color="white" /></a
     >
   </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="md:hidden flex items-center justify-between w-full">
+    <!-- Logo/Home link -->
+    <a
+      class="flex items-center"
+      href={`/${currentLocale}/#`}
+      data-astro-reload
+    >
+      <img src="/favicon.ico" alt="JoaEm" class="w-8 h-8" />
+    </a>
+
+    <div class="flex items-center gap-2">
+      <!-- Language toggle -->
+      <a
+        class="rounded-full p-2 transition hover:bg-white/10"
+        href={otherLocalePath}
+      >
+        <LanguageIcon width="24" height="24" color="white" />
+      </a>
+
+      <!-- Hamburger button -->
+      <button
+        id="menu-toggle"
+        class="rounded-full p-2 transition hover:bg-white/10 focus:outline-none"
+        aria-label="Toggle menu"
+        type="button"
+      >
+        <svg
+          id="menu-icon"
+          class="w-6 h-6 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+        <svg
+          id="close-icon"
+          class="w-6 h-6 text-white hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden absolute top-full left-0 right-0 mx-4 mt-2 rounded-2xl border border-white/10 bg-gray-900/95 backdrop-blur-xl shadow-xl overflow-hidden"
+  >
+    <nav class="flex flex-col py-2">
+      <a
+        class="px-6 py-3 text-white hover:bg-white/10 transition"
+        href={`/${currentLocale}/#`}
+        data-astro-reload
+      >
+        {t("nav.home")}
+      </a>
+      <a
+        class="px-6 py-3 text-white hover:bg-white/10 transition"
+        href={`/${currentLocale}/#experience`}
+        data-astro-reload
+      >
+        {t("nav.experience")}
+      </a>
+      <a
+        class="px-6 py-3 text-white hover:bg-white/10 transition"
+        href={`/${currentLocale}/#projects`}
+        data-astro-reload
+      >
+        {t("nav.projects")}
+      </a>
+      <a
+        class="px-6 py-3 text-white hover:bg-white/10 transition"
+        href={`/${currentLocale}/#about`}
+        data-astro-reload
+      >
+        {t("nav.about")}
+      </a>
+      <a
+        class="px-6 py-3 text-white hover:bg-white/10 transition"
+        href={`/${currentLocale}/#`}
+        data-astro-reload
+      >
+        {t("nav.contact")}
+      </a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (menuToggle && mobileMenu && menuIcon && closeIcon) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+
+      if (isOpen) {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+    });
+
+    // Close menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!menuToggle.contains(target) && !mobileMenu.contains(target)) {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+  }
+</script>
