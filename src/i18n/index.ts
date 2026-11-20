@@ -92,7 +92,7 @@ La solución ofrece una experiencia de búsqueda intuitiva y personalizada, agil
     "exp.buckedup.date": "Marzo 2026 - Actualidad",
     "exp.buckedup.title":
       "Mobile Lead (React Native - Expo, E-commerce)",
-    "exp.onde.date": "Julio 2025 - Actualidad",
+    "exp.onde.date": "Julio 2025 - Febrero 2026",
     "exp.onde.title":
       "Ingeniero de IA y Desarrollador Fullstack Móvil (React Native - Expo, Supabase e IA)",
     "exp.sugarsync.date": "Agosto 2025 - Actualidad",
