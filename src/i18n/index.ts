@@ -60,8 +60,11 @@ export const ui = {
     "projects.viewCode": "Ver código fuente",
     "projects.goToWeb": "Ir al sitio web",
     "projects.downloadApp": "Descargar App Android",
+    "projects.downloadIosApp": "Descargar App iOS",
 
     // Project descriptions
+    "project.buckedup.description":
+      "La app oficial de ecommerce de Bucked Up, marca estadounidense de suplementos deportivos, publicada en App Store y Google Play. Lidero el desarrollo mobile desde marzo de 2026: una app nativa con React Native y Expo (New Architecture), Expo Router, Zustand, TanStack Query y NativeWind, conectada a la API del backend de la marca. Incluye catálogo con stacks y bundles, carrito con cupones y envío gratis, checkout nativo también para invitados, y pagos con Braintree: tarjeta, PayPal, Venmo, Apple Pay y Google Pay, con express checkout que cotiza el envío dentro de la hoja de pago gracias a un parche nativo propio. Suma login con biometría, push notifications y deep links con Klaviyo, analítica con RudderStack, monitoreo con Sentry y actualizaciones OTA con EAS.",
     "project.onde.description":
       "Un marketplace inmobiliario full-stack con capacidades avanzadas de búsqueda por IA, descubrimiento semántico de propiedades y asistencia de chat inteligente. Construido con un enfoque de arquitectura dual moderna que combina APIs REST tradicionales con funciones serverless edge.",
     "project.sugarsync.description":
@@ -86,6 +89,9 @@ La solución ofrece una experiencia de búsqueda intuitiva y personalizada, agil
       'Blog dinámico entregado para incorporación al sitio web de la empresa. Colaboración entre estudiantes aplicando la metodología "scrum". Interfaz de usuario construida en Next.js 13, con implementación de Zustand para gestión de estado global. Servidor construido en AWS Lambda, configurando AWS Api Gateway como trigger de eventos. Sistema de almacenamiento de imágenes en AWS S3 Buckets.',
 
     // Experience
+    "exp.buckedup.date": "Marzo 2026 - Actualidad",
+    "exp.buckedup.title":
+      "Mobile Lead (React Native - Expo, E-commerce)",
     "exp.onde.date": "Julio 2025 - Actualidad",
     "exp.onde.title":
       "Ingeniero de IA y Desarrollador Fullstack Móvil (React Native - Expo, Supabase e IA)",
@@ -122,6 +128,16 @@ La solución ofrece una experiencia de búsqueda intuitiva y personalizada, agil
       "Programé, actualicé y reparé impresoras 3D FDM",
 
     // Extended experience descriptions
+    "exp.buckedup.description": `Bucked Up Shopping:
+    App de ecommerce nativa para Bucked Up (iOS y Android), cliente de Devias
+      Lidero el desarrollo mobile de la app oficial de compras de Bucked Up, marca estadounidense de suplementos deportivos, publicada en App Store y Google Play.
+
+        ► App nativa con React Native, Expo SDK 54 (New Architecture), TypeScript, Expo Router, Zustand y TanStack Query
+        ► Flujo de compra completo en nativo: catálogo, detalle con stacks y bundles, carrito, cupones, checkout, order bumps y upsells post-compra, con checkout para invitados y direcciones guardadas
+        ► Pagos con Braintree: tarjetas con 3D Secure, PayPal, Venmo y métodos guardados, más express checkout con Apple Pay y Google Pay, parcheando el SDK nativo para cotizar el envío dentro de la hoja de pago
+        ► Analítica con paridad web en RudderStack (eventos de ecommerce y atribución de campañas) y push notifications, deep links y universal/app links con Klaviyo
+        ► Definición de la API REST mobile junto al equipo de backend, verificando cada endpoint en staging antes de integrarlo
+        ► Releases con EAS Build, Submit y actualizaciones OTA, monitoreo con Sentry y cumplimiento de App Store y Google Play (formularios de privacidad, borrado de cuenta in-app, resolución de rechazos de revisión)`,
     "exp.onde.description": `Onde:
     Plataforma Inmobiliaria con IA
       Un marketplace inmobiliario full-stack con capacidades avanzadas de búsqueda por IA, descubrimiento semántico de propiedades y asistencia de chat inteligente. Construido con un enfoque de arquitectura dual moderna que combina APIs REST tradicionales con funciones serverless edge.
@@ -428,8 +444,11 @@ La solución ofrece una experiencia de búsqueda intuitiva y personalizada, agil
     "projects.viewCode": "Watch source code",
     "projects.goToWeb": "Go to web site",
     "projects.downloadApp": "Download Android App",
+    "projects.downloadIosApp": "Download iOS App",
 
     // Project descriptions
+    "project.buckedup.description":
+      "The official ecommerce app for Bucked Up, a US sports supplements brand, live on the App Store and Google Play. I have led mobile development since March 2026: a native app built with React Native and Expo (New Architecture), Expo Router, Zustand, TanStack Query and NativeWind, connected to the brand's backend API. It covers a catalog with stacks and bundles, a cart with coupons and free shipping, native checkout including guest checkout, and Braintree payments: cards, PayPal, Venmo, Apple Pay and Google Pay, with an express checkout that quotes shipping inside the payment sheet through a custom native patch. It also includes biometric sign-in, Klaviyo push notifications and deep links, RudderStack analytics, Sentry monitoring and EAS over-the-air updates.",
     "project.onde.description":
       "A full-stack real estate marketplace featuring advanced AI search capabilities, semantic property discovery, and intelligent chat assistance. Built with a modern dual-architecture approach combining traditional REST APIs with serverless edge functions.",
     "project.sugarsync.description":
@@ -454,6 +473,9 @@ The solution offers an intuitive, personalized search experience, streamlining t
       'Dynamic blog delivered for incorporation to the company website. Collaboration between students applying the "scrum" methodology. User Interface built on Next.js 13, with Zustand implementation for global state management. Server built on AWS Lambda, configuring AWS Api Gateway as event trigger. Image storage system on AWS S3 Buckets.',
 
     // Experience dates and titles - keep same as original
+    "exp.buckedup.date": "March 2026 - Now",
+    "exp.buckedup.title":
+      "Mobile Lead (React Native - Expo, E-commerce)",
     "exp.onde.date": "July 2025 - Now",
     "exp.onde.title":
       "AI Engineer and Fullstack Mobile Developer (React Native - Expo, Supabase and AI)",
@@ -489,6 +511,16 @@ The solution offers an intuitive, personalized search experience, streamlining t
       "I programmed, updated and repaired 3D printers FDM",
 
     // Extended experience descriptions
+    "exp.buckedup.description": `Bucked Up Shopping:
+    Native e-commerce app for Bucked Up (iOS & Android), a Devias client
+      I lead the mobile development of Bucked Up's official shopping app, a US sports supplements brand, live on the App Store and Google Play.
+
+        ► Native app built with React Native, Expo SDK 54 (New Architecture), TypeScript, Expo Router, Zustand and TanStack Query
+        ► Full native purchase flow: catalog, product detail with stacks and bundles, cart, coupons, checkout, order bumps and post-purchase upsells, with guest checkout and saved addresses
+        ► Braintree payments: cards with 3D Secure, PayPal, Venmo and saved payment methods, plus Apple Pay and Google Pay express checkout, patching the native SDK to quote shipping inside the payment sheet
+        ► Web-parity analytics with RudderStack (ecommerce events and campaign attribution) and Klaviyo push notifications, deep links and universal/app links
+        ► Defined the mobile REST API with the backend team, verifying each endpoint against staging before integration
+        ► Releases with EAS Build, Submit and over-the-air updates, Sentry monitoring, and App Store / Google Play compliance (privacy questionnaires, in-app account deletion, review resolutions)`,
     "exp.onde.description": `Onde:
     AI-Powered Real Estate Platform
       A full-stack real estate marketplace featuring advanced AI search capabilities, semantic property discovery, and intelligent chat assistance. Built with a modern dual-architecture approach combining traditional REST APIs with serverless edge functions.

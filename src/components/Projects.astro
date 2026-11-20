@@ -9,6 +9,7 @@ import ExpoIcon from "../icons/Expo.astro";
 import CSSIcon from "../icons/CSS.astro";
 import OpenAIIcon from "../icons/OpenAI.astro";
 import AndroidIcon from "../icons/Android.astro";
+import AppleIcon from "../icons/Apple.astro";
 import JavascriptIcon from "../icons/Javascript.astro";
 import TypescriptIcon from "../icons/Typescript.astro";
 import SupabaseIcon from "../icons/Supabase.astro";
@@ -91,6 +92,7 @@ interface ProjectCardProps {
   title: string;
   descriptionKey: keyof (typeof import("../i18n/index"))["ui"]["en"];
   link?: string;
+  appStore?: string;
   github?: string;
   image: string | string[];
   tags?: Tag[];
@@ -98,6 +100,19 @@ interface ProjectCardProps {
 }
 
 const PROJECTS: ProjectCardProps[] = [
+  {
+    title: "Bucked Up Shopping",
+    descriptionKey: "project.buckedup.description",
+    link: "https://play.google.com/store/apps/details?id=com.daslabs.shopping",
+    appStore: "https://apps.apple.com/us/app/bucked-up-shopping/id6815909078",
+    image: [
+      "/projects/BuckedUp/1.webp",
+      "/projects/BuckedUp/2.webp",
+      "/projects/BuckedUp/3.webp",
+    ],
+    tags: [TAGS.REACTNATIVE, TAGS.EXPO, TAGS.TYPESCRIPT, TAGS.TAILWIND],
+    app: true,
+  },
   {
     title: "Onde",
     descriptionKey: "project.onde.description",
@@ -245,7 +260,7 @@ const PROJECTS: ProjectCardProps[] = [
 <section class="flex flex-col gap-y-16">
   {
     PROJECTS.map(
-      ({ image, title, descriptionKey, tags, link, github, app }) => (
+      ({ image, title, descriptionKey, tags, link, appStore, github, app }) => (
         <article>
           <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
           <p class="text-lg mb-4 text-pretty whitespace-pre-line">
@@ -300,6 +315,12 @@ const PROJECTS: ProjectCardProps[] = [
                     {t("projects.goToWeb")}
                   </>
                 )}
+              </LinkButton>
+            )}
+            {appStore && (
+              <LinkButton link={appStore}>
+                <AppleIcon class="size-6 mr-1" />
+                {t("projects.downloadIosApp")}
               </LinkButton>
             )}
           </footer>
